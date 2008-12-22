@@ -80,7 +80,7 @@ LWMessage *LWMessageDeserialize(void *aData, size_t aLength, size_t *aBytesUsed)
 #pragma mark Validating Messages
 
 LW_EXPORT
-bool LWMessageValidate(LWMessage *aMessage, int32_t aInteger, ...);
+bool LWMessageIsValid(LWMessage *aMessage, int32_t aInteger, ...);
 
 #pragma mark -
 #pragma mark Querying Messages

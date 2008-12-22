@@ -97,11 +97,11 @@ static void test_validate(void)
 	LWArgument *argument4 = LWArgumentCreateFromString("Once upon a time there was a novel embedded inside an argument.");
 	LWMessage *message = LWMessageCreate(123, argument1, argument2, argument3, argument4, NULL);
 
-	UC_ASSERT(LWMessageValidate(message, -1));
-	UC_ASSERT(LWMessageValidate(message,  4, -1, -1, -1, -1));
-	UC_ASSERT(LWMessageValidate(message,  4,  1,  2, -1, -1));
-	UC_ASSERT(!LWMessageValidate(message, 4,  1,  4, -1, -1));
-	UC_ASSERT(!LWMessageValidate(message, 5,  1,  2, -1, -1, 5));
+	UC_ASSERT(LWMessageIsValid(message, -1));
+	UC_ASSERT(LWMessageIsValid(message,  4, -1, -1, -1, -1));
+	UC_ASSERT(LWMessageIsValid(message,  4,  1,  2, -1, -1));
+	UC_ASSERT(!LWMessageIsValid(message, 4,  1,  4, -1, -1));
+	UC_ASSERT(!LWMessageIsValid(message, 5,  1,  2, -1, -1, 5));
 }
 
 static void test_get_message_id(void)

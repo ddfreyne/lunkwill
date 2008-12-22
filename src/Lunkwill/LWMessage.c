@@ -337,7 +337,7 @@ LWMessage *LWMessageDeserialize(void *aData, size_t aLength, size_t *aBytesUsed)
 #pragma mark -
 #pragma mark Validating Messages
 
-bool LWMessageValidate(LWMessage *aMessage, int32_t aInteger, ...)
+bool LWMessageIsValid(LWMessage *aMessage, int32_t aInteger, ...)
 {
 	// messages with variable number of arguments are valid
 	if(aInteger < 0)
