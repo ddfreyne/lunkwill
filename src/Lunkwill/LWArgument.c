@@ -73,6 +73,7 @@ LWArgument *LWArgumentCreate(void *aData, size_t aLength)
 		free(argument);
 		return NULL;
 	}
+	argument->ownsData = true;
 
 	// copy data
 	argument->length = aLength;
@@ -99,6 +100,7 @@ LWArgument *LWArgumentCreateWithoutCopying(void *aData, size_t aLength)
 	// create data
 	argument->data = aData;
 	argument->length = aLength;
+	argument->ownsData = false;
 
 	return argument;
 }
@@ -148,6 +150,11 @@ LWArgument *LWArgumentCreateFrom32BitUnsignedInteger(uint32_t aInteger)
 void LWArgumentSetRetainable(LWArgument *aArgument, bool aIsRetainable)
 {
 	aArgument->isRetainable = aIsRetainable;
+}
+
+void LWArgumentSetOwnsData(LWArgument *aArgument, bool aOwnsData)
+{
+	aArgument->ownsData = aOwnsData;
 }
 
 #pragma mark -
@@ -207,7 +214,8 @@ uint32_t LWArgumentGet32BitUnsignedIntegerValue(LWArgument *aArgument)
 
 void LWArgumentDelete(LWArgument *aArgument)
 {
-	free(aArgument->data);
+	if(aArgument->ownsData)
+		free(aArgument->data);
 	free(aArgument);
 }
 

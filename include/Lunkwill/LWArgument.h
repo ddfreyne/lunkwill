@@ -82,6 +82,9 @@ LWArgument *LWArgumentCreateFrom32BitUnsignedInteger(uint32_t aInteger);
 LW_EXPORT
 void LWArgumentSetRetainable(LWArgument *aArgument, bool aIsRetainable);
 
+LW_EXPORT
+void LWArgumentSetOwnsData(LWArgument *aArgument, bool aOwnsData);
+
 #pragma mark -
 #pragma mark Querying Arguments
 

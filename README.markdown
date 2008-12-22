@@ -49,6 +49,10 @@ For example:
 	LWArgument *argument = LWArgumentCreateFromString("hello");
 	LWArgumentDelete(argument);
 
+Deleting an argument will also delete (i.e. `free`) the data associated with the argument, except if the argument was created without copying. To control an argument's ownership over its data, use `LWArgumentSetOwnsData`. Pass it `true` to ensure that `LWArgumentDelete` also deletes the data, or pass it `false` to tell `LWArgumentDelete` not to touch the data. This function looks like this:
+
+	void LWArgumentSetOwnsData(LWArgument *aArgument, bool aOwnsData);
+
 ### Querying Arguments
 
 To extract data from an argument, use the following functions:

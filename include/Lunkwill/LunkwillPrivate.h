@@ -50,6 +50,7 @@ extern "C" {
 struct _LWArgument {
 	size_t	length;
 	uint8_t	*data;
+	bool	ownsData;
 	bool	isRetainable;
 };
 

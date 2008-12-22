@@ -314,6 +314,7 @@ LWMessage *LWMessageDeserialize(void *aData, size_t aLength, size_t *aBytesUsed)
 
 		// create argument
 		arguments[currentArgument] = LWArgumentCreateWithoutCopying(argumentData, argumentLength);
+		LWArgumentSetOwnsData(arguments[currentArgument], true);
 		++currentArgument;
 
 		// move to next argument index
