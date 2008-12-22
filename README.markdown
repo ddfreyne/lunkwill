@@ -308,10 +308,10 @@ You can also clear all message validator callbacks using the
 You don't usually need to manually validate individual messages (use the data
 handler instead), but it may come in handy at times.
 
-To manually validate a specific message, use the `LWValidatorValidateMessage`
+To manually validate a specific message, use the `LWValidatorMessageIsValid`
 function, which looks like this:
 
-    bool LWValidatorValidateMessage(LWValidator *aValidator,
+    bool LWValidatorMessageIsValid(LWValidator *aValidator,
         LWMessage *aMessage);
 
 This function returns true or false depending on whether the message is valid
@@ -320,7 +320,7 @@ valid.
 
 For example:
 
-    bool isValid = LWValidatorValidateMessage(validator, message);
+    bool isValid = LWValidatorMessageIsValid(validator, message);
 
 ### Using Validators in Conjunction with Data Handlers
 

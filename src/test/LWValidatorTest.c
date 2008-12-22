@@ -87,7 +87,7 @@ static void test_validate_valid_message(void)
 	LWValidator *validator = LWValidatorCreate();
 	LWMessage *message = LWMessageCreate(123, NULL);
 	LWValidatorSetMessageValidationCallback(validator, 123, &validate_valid_message);
-	UC_ASSERT(LWValidatorValidateMessage(validator, message));
+	UC_ASSERT(LWValidatorMessageIsValid(validator, message));
 	LWMessageDelete(message);
 	LWValidatorDelete(validator);
 }
@@ -97,7 +97,7 @@ static void test_validate_invalid_message(void)
 	LWValidator *validator = LWValidatorCreate();
 	LWMessage *message = LWMessageCreate(123, NULL);
 	LWValidatorSetMessageValidationCallback(validator, 123, &validate_invalid_message);
-	UC_ASSERT(!LWValidatorValidateMessage(validator, message));
+	UC_ASSERT(!LWValidatorMessageIsValid(validator, message));
 	LWMessageDelete(message);
 	LWValidatorDelete(validator);
 }
@@ -107,7 +107,7 @@ static void test_validate_unknown_message(void)
 	LWValidator *validator = LWValidatorCreate();
 	LWMessage *message = LWMessageCreate(123, NULL);
 	UC_ASSERT_NULL(validator->messageValidationCallbacks[123]);
-	UC_ASSERT(LWValidatorValidateMessage(validator, message));
+	UC_ASSERT(LWValidatorMessageIsValid(validator, message));
 	LWMessageDelete(message);
 	LWValidatorDelete(validator);
 }

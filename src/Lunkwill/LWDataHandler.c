@@ -181,7 +181,7 @@ bool LWDataHandlerHandleData(LWDataHandler *aDataHandler, void *aData, size_t aD
 			break;
 
 		// validate message
-		if(aDataHandler->validator && !LWValidatorValidateMessage(aDataHandler->validator, message))
+		if(aDataHandler->validator && !LWValidatorMessageIsValid(aDataHandler->validator, message))
 		{
 			// message is invalid
 			if(aDataHandler->invalidMessageCallback)

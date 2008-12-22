@@ -68,7 +68,7 @@ void LWValidatorClearMessageValidationCallbacks(LWValidator *aValidator);
 #pragma mark Validating Messages
 
 LW_EXPORT
-bool LWValidatorValidateMessage(LWValidator *aValidator, LWMessage *aMessage);
+bool LWValidatorMessageIsValid(LWValidator *aValidator, LWMessage *aMessage);
 
 #ifdef __cplusplus
 }

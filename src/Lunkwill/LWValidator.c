@@ -84,7 +84,7 @@ void LWValidatorClearMessageValidationCallbacks(LWValidator *aValidator)
 #pragma mark -
 #pragma mark Validating Messages
 
-bool LWValidatorValidateMessage(LWValidator *aValidator, LWMessage *aMessage)
+bool LWValidatorMessageIsValid(LWValidator *aValidator, LWMessage *aMessage)
 {
 	// get message validation rule
 	LWValidatorMessageValidationCallback callback = aValidator->messageValidationCallbacks[aMessage->messageID];
