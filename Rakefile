@@ -4,7 +4,7 @@ TARGET_BIN_TEST   = 'lunkwill_test'
 TARGET_LIB        = 'lunkwill.dylib'
 
 SRCS_LIB          = FileList[ 'src/Lunkwill/*.c' ]
-SRCS_BIN_TEST     = FileList[ 'src/Lunkwill/*.c', 'src/test/*.c', 'src/LunkwillTest.c', 'vendor/uctest/src/uctest/*.c' ]
+SRCS_BIN_TEST     = FileList[ 'src/Lunkwill/*.c', 'src/test/*.c', 'vendor/uctest/src/uctest/*.c' ]
 
 CFLAGS            = '--std=c99 -W -Wall -Iinclude -Ivendor/uctest/include'
 LDFLAGS_BIN_TEST  = ''
