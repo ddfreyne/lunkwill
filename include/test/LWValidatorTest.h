@@ -2,7 +2,7 @@
  * LWValidatorTest.h
  * Lunkwill
  *
- * Copyright (c) 2003-2008 Denis Defreyne, Sam Rushing
+ * Copyright (c) 2003-2009 Denis Defreyne, Sam Rushing
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),

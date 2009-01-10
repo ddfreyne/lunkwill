@@ -2,7 +2,7 @@
  * LWMessage.h
  * Lunkwill
  * 
- * Copyright (c) 2003-2008 Denis Defreyne, Sam Rushing
+ * Copyright (c) 2003-2009 Denis Defreyne, Sam Rushing
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
