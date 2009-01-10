@@ -1,42 +1,50 @@
-TARGET_BIN  = 'lunkwill_test'
-TARGET_LIB  = 'lunkwill.dylib'
+### configuration
 
-CFLAGS      = '--std=c99 -W -Wall -Iinclude'
-LDFLAGS_BIN = ''
-LDFLAGS_LIB = ''
+TARGET_BIN_TEST   = 'lunkwill_test'
+TARGET_LIB        = 'lunkwill.dylib'
 
-CC          = 'gcc'
+SRCS_LIB          = FileList[ 'src/Lunkwill/*.c' ]
+SRCS_BIN_TEST     = FileList[ 'src/Lunkwill/*.c', 'src/test/*.c', 'src/LunkwillTest.c', 'src/uctest/*.c' ]
+
+CFLAGS            = '--std=c99 -W -Wall -Iinclude'
+LDFLAGS_BIN_TEST  = ''
+LDFLAGS_LIB       = '-dynamiclib'
+
+CC                = 'gcc'
 
 ### stuff you don't need to care about
 
 require 'rake/clean'
 
-SRCS = FileList['src/**/*.c']
-OBJS = SRCS.ext('o')
+OBJS_LIB       = SRCS_LIB.ext('o')
+OBJS_BIN_TEST  = SRCS_BIN_TEST.ext('o')
 
-CLEAN.include(OBJS)
-CLOBBER.include(TARGET_BIN, TARGET_LIB)
+CLEAN.include '**/*.o'
+CLOBBER.include(TARGET_LIB, TARGET_BIN_TEST)
 
 ### tasks
 
-task :default => [ :build, :run ]
+task :default => [ :build, :test ]
 
-task :build => [ TARGET_BIN, TARGET_LIB ]
+task :build => [ TARGET_BIN_TEST, TARGET_LIB ]
 
-task :run => [ TARGET_BIN ] do
-  sh "echo ; ./#{TARGET_BIN}"
+task :test => [ TARGET_BIN_TEST ] do
+  sh "echo ; ./#{TARGET_BIN_TEST}"
 end
 
 ### rules
 
-rule '.o' => '.c' do |t|
+rule '.o' => [ '.c' ] do |t|
+  puts "CC #{t.source}"
   sh "#{CC} -c #{CFLAGS} -o #{t.name} #{t.source}"
 end
 
-file TARGET_BIN => OBJS do
-  sh "#{CC} #{CFLAGS} #{LDFLAGS_BIN} -o #{TARGET_BIN} #{OBJS}"
+file TARGET_BIN_TEST => OBJS_BIN_TEST do
+  puts "LD #{TARGET_BIN_TEST}"
+  sh "#{CC} #{CFLAGS} #{LDFLAGS_BIN_TEST} -o #{TARGET_BIN_TEST} #{OBJS_BIN_TEST}"
 end
 
-file TARGET_LIB => OBJS do
-  sh "#{CC} #{CFLAGS} #{LDFLAGS_LIB} -dynamiclib -o #{TARGET_LIB} #{OBJS}"
+file TARGET_LIB => OBJS_LIB do
+  puts "LD #{TARGET_LIB}"
+  sh "#{CC} #{CFLAGS} #{LDFLAGS_LIB} -o #{TARGET_LIB} #{OBJS_LIB}"
 end
